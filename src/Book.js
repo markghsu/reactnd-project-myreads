@@ -7,12 +7,11 @@ const Book = function(props) {
       <div className="book-top">
         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${props.imageLinks.thumbnail})` }}></div>
         <div className="book-shelf-changer">
-          <select>
+          <select value={props.shelf} onChange={(evt)=>props.onChangeShelf(evt.target.value)}>
             <option value="none" disabled>Move to...</option>
-            <option value="currentlyReading">Currently Reading</option>
-            <option value="wantToRead">Want to Read</option>
-            <option value="read">Read</option>
-            <option value="none">None</option>
+            {props.shelfOptions.map((shelf) => (
+                <option value={shelf} key={shelf}>{shelf}</option>
+              ))}
           </select>
         </div>
       </div>
@@ -27,7 +26,10 @@ Book.propTypes = {
   authors: PropTypes.array.isRequired,
   imageLinks: PropTypes.shape({
     thumbnail: PropTypes.string.isRequired
-  }).isRequired
+  }).isRequired,
+  shelf: PropTypes.string.isRequired,
+  shelfOptions: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onChangeShelf: PropTypes.func.isRequired
 }
 
 export default Book

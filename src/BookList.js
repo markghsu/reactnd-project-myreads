@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import Bookshelf from './Bookshelf'
 
 const BookList = function(props) {
+	const shelfOptions = props.shelves.map((shelf)=>(shelf.shelfName))
 	return (
 		<div className="list-books">
       <div className="list-books-title">
@@ -12,7 +13,7 @@ const BookList = function(props) {
       <div className="list-books-content">
         <div>
         	{props.shelves.map((shelf) =>(
-        		<Bookshelf title={shelf.shelfName} key={shelf.shelfName} books={shelf.books} />
+        		<Bookshelf title={shelf.shelfName} key={shelf.shelfName} books={shelf.books} shelfOptions={shelfOptions} onChangeShelf={(b,c)=>props.onChangeShelf(b,c)}/>
         		))}
         </div>
       </div>
@@ -28,7 +29,8 @@ BookList.propTypes = {
 	shelves: PropTypes.arrayOf(PropTypes.shape({
 			shelfName: PropTypes.string.isRequired,
 			books: PropTypes.array.isRequired
-		})).isRequired
+		})).isRequired,
+	onChangeShelf: PropTypes.func.isRequired
 }
 
 export default BookList

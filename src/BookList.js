@@ -1,8 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import Bookshelf from './Bookshelf'
 
-const BookList = function() {
+const BookList = function(props) {
 	return (
 		<div className="list-books">
       <div className="list-books-title">
@@ -10,22 +11,9 @@ const BookList = function() {
       </div>
       <div className="list-books-content">
         <div>
-        	<Bookshelf title="Currently Reading" books={[
-        		{
-        			title:"BOoop",
-        			authors:['Emily Gray','Simon Green'],
-        			imageLinks:{thumbnail:"http://books.google.com/books/content?id=PGR2AwAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73-GnPVEyb7MOCxDzOYF1PTQRuf6nCss9LMNOSWBpxBrz8Pm2_mFtWMMg_Y1dx92HT7cUoQBeSWjs3oEztBVhUeDFQX6-tWlWz1-feexS0mlJPjotcwFqAg6hBYDXuK_bkyHD-y&source=gbs_api"},
-        			id:"zYPVuhFDahEC"
-        		},
-        		{
-        			title:"Hello",
-        			authors:['Fellow Marge','Aron Red'],
-        			imageLinks:{thumbnail:"http://books.google.com/books/content?id=PGR2AwAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73-GnPVEyb7MOCxDzOYF1PTQRuf6nCss9LMNOSWBpxBrz8Pm2_mFtWMMg_Y1dx92HT7cUoQBeSWjs3oEztBVhUeDFQX6-tWlWz1-feexS0mlJPjotcwFqAg6hBYDXuK_bkyHD-y&source=gbs_api"},
-        			id:"ssss"
-        		}
-        		]} />
-        	<Bookshelf title="Want to Read" books={[]} />
-        	<Bookshelf title="Read" books={[]} />
+        	{props.shelves.map((shelf) =>(
+        		<Bookshelf title={shelf.shelfName} key={shelf.shelfName} books={shelf.books} />
+        		))}
         </div>
       </div>
       <div className="open-search">
@@ -34,4 +22,13 @@ const BookList = function() {
     </div>
 	)
 }
+
+BookList.propTypes = {
+	title: PropTypes.string.isRequired,
+	shelves: PropTypes.arrayOf(PropTypes.shape({
+			shelfName: PropTypes.string.isRequired,
+			books: PropTypes.array.isRequired
+		})).isRequired
+}
+
 export default BookList

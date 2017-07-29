@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Book from './Book'
 
@@ -9,16 +8,20 @@ const Bookshelf = function(props) {
       <h2 className="bookshelf-title">{ props.title }</h2>
       <div className="bookshelf-books">
         <ol className="books-grid">
-          <li>
-            <Book title="Blah" authors={['Emily Gray, Simon Green']} />
-          </li>
+          {props.books.map((book) => (<li key={book.id}>
+              <Book {...book} />
+            </li>)
+            )}
         </ol>
       </div>
     </div>
 )}
 
 Bookshelf.propTypes = {
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  books: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired
+  })).isRequired
 }
 
 export default Bookshelf

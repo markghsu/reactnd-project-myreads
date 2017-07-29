@@ -1,0 +1,44 @@
+ {
+            "title": "Not Everyone Gets A Trophy",
+            "subtitle": "How to Manage Generation Y",
+            "authors": [
+                "Bruce Tulgan"
+            ],
+            "publisher": "John Wiley & Sons",
+            "publishedDate": "2009-01-23",
+            "description": "This book will frame Generation Y (children born between 1978-1991) for corporate leaders and managers at time when the corporate world is desperate to recruit and retain worked in this age group. It will debunk dozens of myths, including that young employees have no sense of loyalty, won't do grunt work, won't take direction, want to interact only with computers, and are only about money. This book will make a unique contribution in four key ways: It will disprove the idea that the key to recruiting, retaining, and managing this generation is to somehow make the workplace more \"fun.\" To the contrary, Tulgan argues that the key to winning the respect of this generation, and getting the best effort out of them, is to carefully manage their expectations by never downplaying any negative aspect of a job. He will show managers how this Generation thinks transactionally in all negotiations. For them it's about what they will do for you today and what you will do for them today, not tomorrow, not five years from today, but today. He will explain why they have no interest in tying their futures to your corporation. But he will also make clear that they do have a well thought-out plan for themselves, one that requires that every job they take build up their skill sets, so they become more valuable employees for someone else--if and when you do not fulfill your end of the bargain, or drag your feet in doing so. But most of all, it will explain to corporate leaders that for this generation their personal life comes first, so that each job they take must accommodate itself to some need defined by their personal life. Tulgan argues that until you know the personal need the job can satisfy for a potential employee, you and the applicant may be talking past each other. Those needs are so beyond the imagination of most bosses that Tulgan devotes a third of the book to explaining how they affect the job decisions of this generation.",
+            "industryIdentifiers": [
+                {
+                    "type": "ISBN_10",
+                    "identifier": "0470442794"
+                },
+                {
+                    "type": "ISBN_13",
+                    "identifier": "9780470442791"
+                }
+            ],
+            "readingModes": {
+                "text": true,
+                "image": true
+            },
+            "pageCount": 192,
+            "printType": "BOOK",
+            "categories": [
+                "Business & Economics"
+            ],
+            "averageRating": 4,
+            "ratingsCount": 1,
+            "maturityRating": "NOT_MATURE",
+            "allowAnonLogging": true,
+            "contentVersion": "0.5.1.0.preview.3",
+            "imageLinks": {
+                "smallThumbnail": "http://books.google.com/books/content?id=zYPVuhFDahEC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                "thumbnail": "http://books.google.com/books/content?id=zYPVuhFDahEC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+            },
+            "language": "en",
+            "previewLink": "http://books.google.com/books?id=zYPVuhFDahEC&printsec=frontcover&dq=manage&hl=&cd=1&source=gbs_api",
+            "infoLink": "http://books.google.com/books?id=zYPVuhFDahEC&dq=manage&hl=&source=gbs_api",
+            "canonicalVolumeLink": "https://books.google.com/books/about/Not_Everyone_Gets_A_Trophy.html?hl=&id=zYPVuhFDahEC",
+            "id": "zYPVuhFDahEC",
+            "shelf": "none"
+        }

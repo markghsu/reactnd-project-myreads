@@ -1,6 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-function BookList() {
+const BookList = function() {
 	return (
 		<div className="list-books">
             <div className="list-books-title">
@@ -158,7 +159,7 @@ function BookList() {
               </div>
             </div>
             <div className="open-search">
-              <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
+              <Link to="/search">Add a Book</Link>
             </div>
           </div>
 

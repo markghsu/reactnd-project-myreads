@@ -10,7 +10,7 @@ const Book = function(props) {
           <select value={props.shelf} onChange={(evt)=>props.onChangeShelf(evt.target.value)}>
             <option value="none" disabled>Move to...</option>
             {props.shelfOptions.map((shelf) => (
-                <option value={shelf} key={shelf}>{shelf}</option>
+                <option value={shelf.id} key={shelf.id}>{shelf.dispName}</option>
               ))}
           </select>
         </div>
@@ -28,7 +28,10 @@ Book.propTypes = {
     thumbnail: PropTypes.string.isRequired
   }).isRequired,
   shelf: PropTypes.string.isRequired,
-  shelfOptions: PropTypes.arrayOf(PropTypes.string).isRequired,
+  shelfOptions: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      dispName: PropTypes.string.isRequired
+    })).isRequired,
   onChangeShelf: PropTypes.func.isRequired
 }
 

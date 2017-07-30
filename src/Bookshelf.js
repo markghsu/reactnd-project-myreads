@@ -22,7 +22,10 @@ Bookshelf.propTypes = {
   books: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired
   })).isRequired,
-  shelfOptions: PropTypes.arrayOf(PropTypes.string).isRequired,
+  shelfOptions: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      dispName: PropTypes.string.isRequired
+    })).isRequired,
   onChangeShelf: PropTypes.func.isRequired
 }
 

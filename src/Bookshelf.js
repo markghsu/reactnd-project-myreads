@@ -24,7 +24,7 @@ Bookshelf.propTypes = {
   })).isRequired,
   shelfOptions: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.string.isRequired,
-      dispName: PropTypes.string.isRequired
+      name: PropTypes.string.isRequired
     })).isRequired,
   onChangeShelf: PropTypes.func.isRequired
 }

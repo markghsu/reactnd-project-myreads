@@ -33,12 +33,10 @@ class BooksApp extends React.Component {
   }
 
   changeShelf = (book,newShelf) => {
+    BooksAPI.update(book,newShelf).then((resp)=>{console.log(resp)}); //WHAT SHOULD WE DO WITH THE RESPONSE?
     this.setState((prev) =>
       {
-        //const oldShelf = prev.shelves.find((sh)=>(sh.id === book.shelf));
-        //oldShelf.books = oldShelf.books.filter((b) => (b.id !== book.id)); //Remove from old shelf
         prev.books.find((b)=>(b.id === book.id)).shelf = newShelf;
-        //prev.shelves.find((sh)=>(sh.id === newShelf)).books.push(book);
         return prev;
       }
     );

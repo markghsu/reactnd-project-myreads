@@ -16,17 +16,17 @@ const Book = function(props) {
         </div>
       </div>
       <div className="book-title">{props.title}</div>
-      <div className="book-authors">{props.authors.reduce((list,auth) => (`${list}, ${auth}`))}</div>
+      <div className="book-authors">{Array.isArray(props.authors) && props.authors.reduce((list,auth) => (`${list}, ${auth}`))}</div>
     </div>
   )
 }
 
 Book.propTypes = {
   title: PropTypes.string.isRequired,
-  authors: PropTypes.array.isRequired,
+  authors: PropTypes.array,
   imageLinks: PropTypes.shape({
-    thumbnail: PropTypes.string.isRequired
-  }).isRequired,
+    thumbnail: PropTypes.string
+  }),
   shelf: PropTypes.string.isRequired,
   shelfOptions: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.string.isRequired,

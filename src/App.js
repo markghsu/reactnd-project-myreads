@@ -8,8 +8,7 @@ import './App.css'
 class BooksApp extends React.Component {
   state = {
     books: [],
-    shelves: [],
-    search: []
+    shelves: []
   }
 
   componentDidMount() {
@@ -43,30 +42,17 @@ class BooksApp extends React.Component {
         }
         else {
           book.shelf = newShelf;
-          prev.push(book);
+          prev.books.push(book);
         }
         return prev;
       }
     );
   }
-
-  searchQuery = (query) => {
-    if(query){
-      BooksAPI.search(query).then((books)=>{
-        if (books.error) {
-          this.setState(()=>{search:[]});
-        }
-        else {
-          this.setState(()=>({search: books}));
-        }
-      });
-    }
-  }
   render() {
     return (
       <div className="app">
         <Route path="/search" render={() => (
-          <SearchBooks results={this.state.search} onSearch={this.searchQuery} onChange={this.changeShelf} shelves={this.state.shelves}/>
+          <SearchBooks myBooks={this.state.books} onChange={this.changeShelf} shelves={this.state.shelves}/>
         )} />
         <Route exact path="/" render={() => (
           <BookList title="MyReads" shelves={this.state.shelves} books={this.state.books} onChangeShelf={this.changeShelf} />

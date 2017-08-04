@@ -2,24 +2,58 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Bookshelf from './Bookshelf'
+import * as BooksAPI from './BooksAPI'
 
 class SearchBooks extends Component {
   static propTypes = {
-    onSearch: PropTypes.func.isRequired,
-    results: PropTypes.array.isRequired,
+    myBooks: PropTypes.array.isRequired,
     onChange: PropTypes.func.isRequired,
     shelves: PropTypes.array.isRequired
   }
 
   state = {
-    query: ''
+    query: '',
+    searchResults:[]
   }
 
   updateQuery = (query) => {
     this.setState({
       query: query
     });
-    this.props.onSearch(query);
+    this.searchQuery(query);
+  }
+
+  searchQuery = (query) => {
+    if(query){
+      BooksAPI.search(query).then((books)=>{
+        if (books.error) {
+          this.setState(()=>{searchResults:[]});
+        }
+        else {
+          //Set shelf of each book to "none", unless it matches an existing book
+          this.setBookshelves(books);
+        }
+      });
+    }
+  }
+
+  setBookshelves = (books) => {
+    for (const book of books){
+      const foundBook = this.props.myBooks.find((el)=>(book.id===el.id));
+      book.shelf = foundBook?foundBook.shelf:'none';
+    }
+    this.setState(()=>({searchResults: books}));
+  }
+
+  changeShelf = (book,newShelf)=> {
+    // this.setState((prev) => {
+    //   //Needed to keep search results in sync with actual shelf
+    //   const myBook = prev.searchResults.find((b)=>(b.id === book.id));
+    //   myBook.shelf=newShelf;
+    //   return prev;
+    // });
+    this.props.onChange(book,newShelf);
+    this.setBookshelves(this.state.searchResults);
   }
 
   render() {
@@ -40,9 +74,9 @@ class SearchBooks extends Component {
         <div className="search-books-results">
           <Bookshelf
               title="Search Results"
-              books={this.props.results}
+              books={this.state.searchResults}
               shelfOptions={this.props.shelves}
-              onChangeShelf={(b,c)=>this.props.onChange(b,c)}
+              onChangeShelf={this.changeShelf}
             />
           <ol className="books-grid">
 
